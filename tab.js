@@ -15,7 +15,7 @@
       var dataConfig = this.el.attr('data-config');
       dataConfig = $.parseJSON(dataConfig);
       this.getConfig(dataConfig, this.config);
-      console.log(this.config);
+      // console.log(this.config);
     }
     var config = this.config;
 
@@ -27,7 +27,7 @@
     if (config.triggerType) {
       // 进行事件绑定
       this.tabNavs.on(config.triggerType, function () {
-        alert('ok');
+        console.log($(this).index());
       });
       
     }
