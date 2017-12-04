@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.change-color {
+			border: 1px solid red;
+			width: 300px;
+		}
+		.color-zone {
+			width: 200px;	
+			height: 200px;
+			background:gray;
+		}
+		.redClass {
+			background: red;
+		}
+	</style>
+</head>
+<body>
+   <!-- div放置的位置很重要 -->
+	<div class='change-color abeng1' data-config='{
+		"color": "red"
+	}'>
+		<button>变色</button>
+		<div class='color-zone'></div>
+	</div>
+
+	<div class='change-color abeng2' data-config='{
+		"color": "blue"
+	}'>
+		<button>变色</button>
+		<div class='color-zone'></div>
+	</div>
+<script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
+<script src='./tab.js'></script>
+<script>
+$(function () {
+
+});
+</script>
+
+</body>
+</html>

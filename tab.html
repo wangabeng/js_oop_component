@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="./tab.css">
+</head>
+<body>
+	<!-- 注意 data-config的{}外层要单引号 否则通过attr获取不到其值-->
+	<div class="tab-wrapper" data-config='{
+      "fade": false,
+      "triggerType": "mouseover",
+      "color": "blue"
+		}'>
+		<ul class='tab-nav'>
+			<li class='active'><a href="javascript:void();">a</a></li>
+			<li><a href="javascript:void(0);">b</a></li>
+			<li><a href="javascript:void(0);">c</a></li>
+			<li><a href="javascript:void(0);">d</a></li>
+		</ul>
+		<div class="tab-content current">A</div>
+		<div class="tab-content">B</div>
+		<div class="tab-content">C</div>
+		<div class="tab-content">D</div>
+	</div>
+<script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
+<script src='./tab.js'></script>
+<script>
+	$(function () {
+		new Tab($('.tab-wrapper').eq(0));
+	});
+</script>
+
+</body>
+</html>

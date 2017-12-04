@@ -1,0 +1,47 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+.tab-wrapper {
+	width: 300px;
+}
+.tab-nav {
+	zoom: 1;
+	margin-bottom: 10px;
+}
+.tab-nav:after {
+	content: '';
+	display: block;
+	height: 0;
+	line-height: 0;
+	visibility: hidden;
+	clear: both;
+}
+.tab-nav li {
+	float: left;
+	border: 1px gray solid;
+	list-style: none;
+	line-height: 28px;
+	height: 28px;
+	margin-right: 10px;
+	border-radius: 3px;
+}
+.tab-nav li.active {
+	background: #ccc;
+}
+.tab-nav li a {
+	text-decoration: none;
+	padding: 5px 15px;
+	font-size: 14px;
+	color: #333;
+}
+.tab-content {
+	position: absolute;
+	width: 250px;
+	height: 100px;
+	background: #ccc;
+	display: none;
+}
+.current {
+	display: block;
+}
