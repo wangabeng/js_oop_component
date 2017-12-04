@@ -56,13 +56,20 @@
   };
 
   // 3 初始化 创建实例
-  function init () {
-    $('.tab-wrapper').each(function(){
-      new Tab($(this));
-    });
-  }
+/*  function init () {
+
+  }*/
+
+  $.fn.extend({
+    tab: function (el) {
+      el.each(function(){
+        new Tab($(this));
+      }); 
+      // return $(this);
+    } 
+  })
 
   // window.Tab = Tab;
-  window.init = init;
+  // window.init = init;
 
 })();
