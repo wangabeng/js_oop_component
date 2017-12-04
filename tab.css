@@ -35,6 +35,10 @@
 	font-size: 14px;
 	color: #333;
 }
+.cont-wrapper {
+	position: relative;
+	height: 100px;
+}
 .tab-content {
 	position: absolute;
 	width: 250px;

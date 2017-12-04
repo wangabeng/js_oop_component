@@ -18,16 +18,40 @@
 			<li><a href="javascript:void(0);">c</a></li>
 			<li><a href="javascript:void(0);">d</a></li>
 		</ul>
-		<div class="tab-content current">A</div>
-		<div class="tab-content">B</div>
-		<div class="tab-content">C</div>
-		<div class="tab-content">D</div>
+		<div class='cont-wrapper'>
+			<div class="tab-content current">A</div>
+			<div class="tab-content">B</div>
+			<div class="tab-content">C</div>
+			<div class="tab-content">D</div>
+		</div>
 	</div>
+
+
+	<div class="tab-wrapper wrapper2" data-config='{
+      "fade": false,
+      "triggerType": "mouseover",
+      "color": "blue"
+		}'>
+		<ul class='tab-nav'>
+			<li class='active first'><a href="javascript:void(0);">a</a></li>
+			<li class='second'><a href="javascript:void(0);">b</a></li>
+			<li><a href="javascript:void(0);">c</a></li>
+			<li><a href="javascript:void(0);">d</a></li>
+		</ul>
+		<div class='cont-wrapper'>
+			<div class="tab-content current">A</div>
+			<div class="tab-content">B</div>
+			<div class="tab-content">C</div>
+			<div class="tab-content">D</div>
+		</div>
+	</div>
+
+
 <script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
 <script src='./tab.js'></script>
 <script>
 	$(function () {
-		new Tab($('.tab-wrapper').eq(0));
+		init();
 	});
 </script>
 
