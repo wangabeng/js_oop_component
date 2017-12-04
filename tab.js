@@ -61,11 +61,11 @@
   }*/
 
   $.fn.extend({
-    tab: function (el) {
-      el.each(function(){
+    tab: function () {
+      this.each(function(){
         new Tab($(this));
       }); 
-      // return $(this);
+      return $(this);
     } 
   })
 
