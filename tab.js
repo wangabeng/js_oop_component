@@ -32,9 +32,14 @@
     // 根据不同的配置参数 进行不同的事件绑定
     if (config.triggerType) {
       // 进行事件绑定
-      this.tabNavs.on(config.triggerType, function () {
+      this.tabNavs.on(config.triggerType, function (event, flag) {
         // $(this)指的是被点击的当前tab的包装对象
-        console.log($(this).index());
+        if (config.triggerType === 'click' && !flag) {
+          // flag不存在 就是自主点击的 此时就把定时器清除.如果点击后 再自动播放
+          console.log('cickzifa');
+          clearInterval(_this_.timer);
+        }
+        // console.log($(this).index());
         // 清除定时器
         // clearInterval(_this_.timer);
         // 每点击或鼠标移入 都会重置activeIndex的值
@@ -42,6 +47,14 @@
         _this_.loop = _this_.activeIndex;
         _this_.tabNav($(this), _this_.showCont); // 应用原型方法
       });
+
+      // 增加鼠标移出监听事件
+      if (!!config.autoPlay) {
+        this.tabNavs.on('mouseout', function () {
+          _this_.autoPlay();
+        });
+      }
+
     }
 
     // 设置是否自动播放
@@ -97,9 +110,19 @@
         // _this_.tabNavs.trigger(_this_.triggerType_);
         // console.log(_this_.loop);
         _this_.activeIndex = _this_.loop % _this_.size;
-        _this_.tabNavs.eq(_this_.activeIndex).trigger(_this_.config.triggerType);
+        _this_.tabNavs.eq(_this_.activeIndex).trigger(_this_.config.triggerType, ['triggerFlag']);
         _this_.loop++;
-      }, 800);
+      }, 1800);
+
+      // 监听content元素的鼠标移入事件 content内容的鼠标移入时
+      _this_.showCont.on('mouseover', function () {
+        // 此时清除定时器
+        clearInterval(_this_.timer);
+      });
+      _this_.showCont.on('mouseout', function () {
+        // 此时清除定时器
+        _this_.autoPlay();
+      });
     }
   };
 
@@ -123,3 +146,20 @@
 })();
 
 // 遇到的问题 每次自动播放的时候 鼠标移入或点击 应该使自动播放暂时停止 
+// 我自己分析 最好的方法 就是不用trigger方法
+
+// 搜索发现 建议最好不要trigger原生的事件 如click等
+// 参见 http://www.jb51.net/article/47571.htm
+// 所以 
+// 一种 解决思路是 trigger非原生事件来替换原生事件
+// 还有一种解决思路 参考
+// https://www.cnblogs.com/Mrrabbit/p/6999814.html
+// 传递参数
+
+/*trigger(tpye[,datea])方法有两个参数，第一个参数是要触发的事件类型，第二个单数是要传递给事件处理函数的附加数据，以数组形式传递。通常可以通过传递一个参数给回调函数来区别这次事件是代码触发的还是用户触发的。
+
+$("#btn").bind("myClick", function (event, message1, message2) { //获取数据
+    $("#test").append("p" + message1 + message2 + "</p>");
+});
+$("#btn").trigger("myClick",["我的自定义","事件"]); //传递两个数据
+$(“#btn”).trigger(“myClick”,["我的自定义","事件"]); //传递两个数据*/
